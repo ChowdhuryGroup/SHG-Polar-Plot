@@ -16,9 +16,9 @@ def nploadtxt_skiprows(filename, rows_to_skip):
 def gaussian(x, a, mu, s):
     return a * np.exp(-.5*((x-mu)/s)**2) / (s*np.sqrt(2.*np.pi)) 
 
-folder = 'AgScP2S6/polarization_horizontal/'
+folder = '/home/liam/Downloads/CuSc_Repeated/Vertical/'
 
-background = np.genfromtxt(folder+'BKG.txt', delimiter='\t', skip_header=17, skip_footer=1)
+background = np.genfromtxt(folder+'bkg.txt', delimiter='\t', skip_header=17, skip_footer=1)
 
 data = []
 for i in range(0,360,2):
@@ -43,3 +43,9 @@ ax.plot(theta, r, '.')
 ax.grid(True)
 
 plt.show()
+
+check = input("Save data points? (y/n)")
+if (check == 'y' or check == 'Y'):
+    import os
+    print("Saved as: "+os.getcwd()+'/processed_data.tsv')
+    np.savetxt(os.getcwd()+'/processed_data.tsv', list(zip(theta*180./np.pi, r)), delimiter='\t', header='Angle (degrees)\tAmplitude (counts*nm)')
