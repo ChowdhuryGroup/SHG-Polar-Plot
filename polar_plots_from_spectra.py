@@ -16,7 +16,7 @@ def nploadtxt_skiprows(filename, rows_to_skip):
 def gaussian(x, a, mu, s):
     return a * np.exp(-.5*((x-mu)/s)**2) / (s*np.sqrt(2.*np.pi)) 
 
-folder = '/home/liam/Downloads/CuSc_Repeated/Vertical/'
+folder = '/media/liam/FASTLITE/ZincSC SHG Polarization/horizontal/'
 
 background = np.genfromtxt(folder+'bkg.txt', delimiter='\t', skip_header=17, skip_footer=1)
 
