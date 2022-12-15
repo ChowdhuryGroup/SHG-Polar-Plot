@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-filename = open("289kvertical.txt", "r")
+filename = open("289khoriz.txt", "r")
 lines = filename.readlines()
 
 date_start = len(lines[0].split(":")[0])
@@ -56,3 +56,5 @@ for i in range(spectra.shape[1]):
 plt.axes(projection="polar")
 plt.polar(degrees * (np.pi / 180.0), integrals)
 plt.show()
+
+np.savetxt("289K Horizontal.tsv", np.stack((degrees, integrals), axis=1))
